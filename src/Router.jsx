@@ -14,12 +14,12 @@ export default function Router() {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzE4YTRjNWFkZDhkYzY5OWYxOTFiYTU5M2M1YWNjNyIsIm5iZiI6MTczMjM3NjgzMy44MTc3MDM3LCJzdWIiOiI2NzAxY2E5YmY4NzhhZGZlZDA4NTdkOTYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.gT61bB94LtzewuCUasuGjhKd-0yatfM0hjNs7GyH1Bg",
+        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
       },
     }),
     []
   );
+  
 
   const { data, loading, error } = useFetch(url, options);
 
