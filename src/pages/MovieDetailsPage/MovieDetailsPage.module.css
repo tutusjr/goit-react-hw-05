@@ -1,0 +1,16 @@
+.image{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.genreTitle{
+    font-weight: bold;
+}
+
+.movieDetailsContainer{
+    display: flex;
+    gap: 20px;
+}
+.descContainer{
+    width: 100%;
+}

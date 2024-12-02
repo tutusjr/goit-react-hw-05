@@ -1,21 +1,25 @@
-import React from 'react'
-import MovieList from '../components/MovieList'
-
-export default function Home({movies}) {
-
-
-  console.log(movies)
-  if (!movies) return <p>Loading...</p>;
+import React from "react";
+import MovieList from "../components/MovieList";
+import useFetch from "../hooks/useFetch"
+import { useRef } from "react";
+export default function Home() {
+  const urlRef = useRef("https://api.themoviedb.org/3/trending/movie/day");
   
+
+  const { data, loading, error } = useFetch(urlRef.current);
+  
+  console.log(data);
+
+  if (loading) return <p>Loading ... </p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <div>
-       {Array.isArray(movies) && movies.length > 0 ? (
-        movies.map((movie) => (
-          <MovieList key={movie.id} movie={movie} />
-        ))
+      {Array.isArray(data.results) && data.results.length > 0 ? (
+        data.results.map((movie) => <MovieList key={movie.id} movie={movie} />)
       ) : (
         <p>No movies available</p>
       )}
     </div>
-  )
+  );
 }
