@@ -9,8 +9,6 @@ export default function MovieCast() {
 
   const { data: casts, loading, error } = useFetch(url);
 
-  console.log(casts);
-
   if (loading) {
     return <div>loading...</div>;
   }
@@ -22,7 +20,7 @@ export default function MovieCast() {
     <>
       <div>
         {casts?.cast &&
-          casts.cast.slice(0,7).map((c) => (
+          casts.cast.slice(0, 7).map((c) => (
             <li className={styles.listContainer} key={c.id}>
               <img
                 className={styles.image}

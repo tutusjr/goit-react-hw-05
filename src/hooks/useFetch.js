@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useMemo } from "react";
+import axios from "axios";
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -18,9 +18,7 @@ const useFetch = (url) => {
   );
 
   useEffect(() => {
-    if (!url) return; 
-
-    console.log(`Fetching data from ${url}`);
+    if (!url) return;
     const fetchData = async () => {
       try {
         setLoading(true);

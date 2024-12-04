@@ -4,6 +4,7 @@ import Home from "./pages/HomePage";
 import Movies from "./pages/MoviesPage";
 import Layout from "./components/Layout";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function Router() {
   return (
@@ -14,6 +15,7 @@ export default function Router() {
         <Route path="movies/:movieId" element={<MovieDetailsPage />} />
         <Route path="/movies/:movieId/cast" element={<MovieDetailsPage />} />
         <Route path="/movies/:movieId/reviews" element={<MovieDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />}/>
       </Route>
     </Routes>
   );

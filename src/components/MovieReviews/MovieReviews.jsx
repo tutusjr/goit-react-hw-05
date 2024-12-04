@@ -4,17 +4,16 @@ import useFetch from "../../hooks/useFetch";
 
 export default function MoviesReviews() {
   const { movieId } = useParams();
-  console.log(movieId);
 
   const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews`;
 
   const { data: reviews, loading, error } = useFetch(url);
 
-  if(loading){
-    return <div>Loading ...</div>
+  if (loading) {
+    return <div>Loading ...</div>;
   }
-  if(error){
-    return <div>error: {error}</div>
+  if (error) {
+    return <div>error: {error}</div>;
   }
 
   return (
