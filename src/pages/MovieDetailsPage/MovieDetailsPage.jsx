@@ -1,13 +1,15 @@
 import { useParams, useNavigate, Link, useLocation } from "react-router";
+import { useRef } from "react";
 import useFetch from "../../hooks/useFetch";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews"
+import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const previousLocationRef = useRef(location.state?.from);
   const detailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
   const { data, loading, error } = useFetch(detailsUrl);
 
@@ -21,7 +23,9 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
-      <button onClick={() => navigate(-1)}>Go Back</button>
+      <button onClick={() => navigate(previousLocationRef.current)}>
+        Go Back
+      </button>
       <MovieDetails detail={data} />
       <div>
         <p>Additional information</p>

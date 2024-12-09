@@ -13,11 +13,7 @@ export default function Home() {
   return (
     <div>
       {data?.results && data.results.length > 0 ? (
-        <ul>
-          {data.results.map((movie) => (
-            <MovieList movie={movie} key={movie.id} />
-          ))}
-        </ul>
+        <MovieList movies={data.results} />
       ) : (
         <p>No movies available</p>
       )}
